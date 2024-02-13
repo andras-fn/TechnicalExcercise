@@ -7,7 +7,7 @@ export type CarePlan = {
   targetStartDateTime: string;
   reason: string;
   action: string;
-  completed: boolean | null;
-  endDateTime: string | null;
-  outcome: string | null;
+  completed?: boolean | undefined;
+  endDateTime?: string | null;
+  outcome?: string | null;
 };

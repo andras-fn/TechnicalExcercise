@@ -1,7 +1,9 @@
+import CreateButton from "./CreateButton";
+
 const Navbar = () => {
   return (
     <div className="w-full bg-slate-500 p-2">
-      <div className="flex gap-x-2  text-white">
+      <div className="flex gap-x-2 items-center text-white">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -17,6 +19,8 @@ const Navbar = () => {
           />
         </svg>
         <span>Care Plan Creator 3000</span>
+        <div className="h-[40px] bg-white w-px"></div>
+        <CreateButton />
       </div>
     </div>
   );

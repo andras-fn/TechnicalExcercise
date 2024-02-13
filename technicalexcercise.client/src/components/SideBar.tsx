@@ -1,4 +1,4 @@
-const SideBar = ({ carePlans, setActiveCarePlan }) => {
+const SideBar = ({ carePlans, activeCarePlan, setActiveCarePlan }) => {
   const handleClick = (e) => {
     const carePlanId = e.currentTarget.id;
     setActiveCarePlan(carePlans.find((carePlan) => carePlan.id === carePlanId));
@@ -9,7 +9,9 @@ const SideBar = ({ carePlans, setActiveCarePlan }) => {
       <div className="overflow-y-scroll gap-y-2 flex flex-col pr-2 min-h-full max-h-full">
         {carePlans.map((carePlan) => (
           <div
-            className="w-full border border-black rounded p-2 hover:cursor-pointer flex flex-col z-10"
+            className={`w-full border border-black rounded p-2 hover:cursor-pointer flex flex-col ${
+              carePlan.id === activeCarePlan.id ? "bg-slate-200" : ""
+            }`}
             key={carePlan.id}
             id={carePlan.id}
             onClick={handleClick}

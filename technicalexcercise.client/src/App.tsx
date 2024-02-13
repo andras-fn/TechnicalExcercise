@@ -34,9 +34,13 @@ const App = () => {
     <div className="max-h-screen h-screen w-screen">
       <Navbar />
       {/* viewing area */}
-      <div className="max-h-[calc(100%-40px)] h-[calc(100%-40px)] flex divide-x divide-slate-500">
+      <div className="max-h-[calc(100%-56px)] h-[calc(100%-56px)] flex divide-x divide-slate-500">
         {/* left hand side bar */}
-        <SideBar carePlans={carePlans} setActiveCarePlan={setActiveCarePlan} />
+        <SideBar
+          carePlans={carePlans}
+          activeCarePlan={activeCarePlan}
+          setActiveCarePlan={setActiveCarePlan}
+        />
         {/* right hand viewing area */}
         <ViewingArea
           carePlans={carePlans}
