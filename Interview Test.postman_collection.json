@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "0b5aae28-734f-4149-8a88-a8c15017a156",
+		"name": "Interview Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19525679"
+	},
+	"item": [
+		{
+			"name": "Get all Care Plans",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/CarePlan",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"CarePlan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Care Plan by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/CarePlan/04291c60-b8e0-44e6-bf6f-1bd6b3e840c2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"CarePlan",
+						"04291c60-b8e0-44e6-bf6f-1bd6b3e840c2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Care Plan by ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Mr\",\r\n    \"patientName\": \"James Doexxxx\",\r\n    \"userName\": \"admin2\",\r\n    \"actualStartDateTime\": \"2024-02-03T08:30:00\",\r\n    \"targetStartDateTime\": \"2024-02-02T09:00:00\"\r\n   \r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/CarePlan/c7855d15-9d68-4c28-b4a9-b3d89f2930e4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"CarePlan",
+						"c7855d15-9d68-4c28-b4a9-b3d89f2930e4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new Care Plan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Mr\",\r\n    \"patientName\": \"James Doexxxx\",\r\n    \"userName\": \"admin2\",\r\n    \"actualStartDateTime\": \"2024-02-03T08:30:00\",\r\n    \"targetStartDateTime\": \"2024-02-02T09:00:00\",\r\n    \"reason\": \"Migraines\",\r\n    \"action\": \"Medicate and attempt to diagnose root cause\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/CarePlan",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"CarePlan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Care Plan by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Mr\",\r\n    \"patientName\": \"James Doex\",\r\n    \"userName\": \"admin2\",\r\n    \"actualStartDateTime\": \"2024-02-03T08:30:00\",\r\n    \"targetStartDateTime\": \"2024-02-02T09:00:00\",\r\n    \"reason\": \"Migraines\",\r\n    \"action\": \"Medicate and attempt to diagnose root cause with extra effort\",\r\n    \"outcome\": \"jeff and dave\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/CarePlan/9a91f9a4-1961-427d-9f5b-445245271d06",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"CarePlan",
+						"9a91f9a4-1961-427d-9f5b-445245271d06"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:5177",
+			"type": "string"
+		}
+	]
+}

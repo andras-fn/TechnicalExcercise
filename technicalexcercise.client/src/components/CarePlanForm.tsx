@@ -1,13 +1,30 @@
-import { CarePlan } from "../types/CarePlan";
+import type { FieldError } from "../types/FieldError";
+import type { ActiveCarePlan } from "../types/ActiveCarePlan";
+
 import FieldErrorComponent from "./FieldErrorComponent";
 
 const CarePlanForm = ({
-  passedCarePlanDetails,
+  currentCarePlanDetails,
+  setCurrentCarePlanDetails,
+  fieldErrors,
 }: {
-  passedCarePlanDetails: CarePlan;
+  currentCarePlanDetails: ActiveCarePlan;
+  setCurrentCarePlanDetails: (obj: ActiveCarePlan) => void;
+  fieldErrors: FieldError;
 }) => {
-  const [currentCarePlanDetails, setCurrentCarePlanDetails] =
-    useState<CarePlan>(passedCarePlanDetails);
+  const formChangeHandler = (e: any) => {
+    if (e.target.type === "checkbox") {
+      setCurrentCarePlanDetails({
+        ...currentCarePlanDetails,
+        [e.target.id]: e.target.checked,
+      });
+    } else {
+      setCurrentCarePlanDetails({
+        ...currentCarePlanDetails,
+        [e.target.id]: e.target.value,
+      });
+    }
+  };
   return (
     <form className="flex flex-col gap-y-3 p-2 w-[500px] text-s text-slate-700 mx-auto">
       <div className="flex justify-between">

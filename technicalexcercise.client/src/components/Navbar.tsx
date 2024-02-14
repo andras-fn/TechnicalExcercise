@@ -1,6 +1,18 @@
 import CreateButton from "./CreateButton";
+import { CarePlan } from "../types/CarePlan";
+import type { ActiveCarePlan } from "../types/ActiveCarePlan";
 
-const Navbar = () => {
+const Navbar = ({
+  carePlans,
+  setCarePlans,
+  activeCarePlan,
+  setActiveCarePlan,
+}: {
+  carePlans: CarePlan[];
+  setCarePlans: (arr: CarePlan[]) => void;
+  activeCarePlan: ActiveCarePlan;
+  setActiveCarePlan: (obj: ActiveCarePlan) => void;
+}) => {
   return (
     <div className="w-full bg-slate-500 p-2">
       <div className="flex gap-x-2 items-center text-white">
@@ -20,7 +32,12 @@ const Navbar = () => {
         </svg>
         <span>Care Plan Creator 3000</span>
         <div className="h-[40px] bg-white w-px"></div>
-        <CreateButton />
+        <CreateButton
+          carePlans={carePlans}
+          setCarePlans={setCarePlans}
+          setActiveCarePlan={setActiveCarePlan}
+          activeCarePlan={activeCarePlan}
+        />
       </div>
     </div>
   );

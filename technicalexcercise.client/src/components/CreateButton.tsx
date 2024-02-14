@@ -1,7 +1,20 @@
 import { useState } from "react";
+
 import Modal from "./Modal";
 
-const CreateButton = () => {
+import type { CarePlan } from "../types/CarePlan";
+import type { ActiveCarePlan } from "../types/ActiveCarePlan";
+
+const CreateButton = ({
+  carePlans,
+  setCarePlans,
+  setActiveCarePlan,
+}: {
+  carePlans: CarePlan[];
+  setCarePlans: (arr: CarePlan[]) => void;
+  activeCarePlan: ActiveCarePlan;
+  setActiveCarePlan: (obj: ActiveCarePlan) => void;
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -19,7 +32,13 @@ const CreateButton = () => {
       >
         Create
       </button>
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        carePlans={carePlans}
+        setCarePlans={setCarePlans}
+        setActiveCarePlan={setActiveCarePlan}
+      />
     </div>
   );
 };

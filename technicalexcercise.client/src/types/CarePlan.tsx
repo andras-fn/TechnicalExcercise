@@ -1,5 +1,5 @@
 export type CarePlan = {
-  id: string;
+  id?: string;
   title: string;
   patientName: string;
   userName: string;
