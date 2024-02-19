@@ -2,102 +2,91 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
-[ApiController]
-[Route("api/[controller]")]
-public class CarePlanController : ControllerBase
+namespace TechnicalExcercise.Server.Controllers
 {
-    private static List<CarePlan> carePlans = new List<CarePlan>
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CarePlanController : ControllerBase
     {
-        //new CarePlan {
-        //    Id = Guid.NewGuid(),
-        //    Title = "Mr",
-        //    PatientName = "John Doe",
-        //    UserName = "admin",
-        //    ActualStartDateTime = DateTime.Parse("2024-02-03T08:30:00"),
-        //    TargetStartDateTime = DateTime.Parse("2024-02-02T09:00:00"),
-        //    Reason = "Ankle fracture223",
-        //    Action = "Review and address any mobility issues arising from the issue",
-        //    Completed = false,
-        //    EndDateTime = DateTime.Parse("2024-02-02T11:00:00"),
-        //    Outcome = ""
-        //}
-    };
+        // use in memory list - no db connection
+        public static List<CarePlan> CarePlans { get; } = new List<CarePlan>();
 
-    [HttpGet]
-    public ActionResult<IEnumerable<CarePlan>> GetCarePlans()
-    {
-        return Ok(carePlans);
-    }
-
-    [HttpGet("{id}")]
-    public ActionResult<CarePlan> GetCarePlanById(Guid id)
-    {
-        var carePlan = carePlans.FirstOrDefault(t => t.Id == id);
-
-        if (carePlan == null)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CarePlan>>> GetCarePlans()
         {
-            return NotFound($"Care Plan with Id {id} not found");
+            return Ok(await Task.FromResult(CarePlans));
         }
 
-        return Ok(carePlan);
-    }
-
-    [HttpPost]
-    public ActionResult<CarePlan> CreateCarePlan([FromBody] CarePlan carePlan)
-    {
-        if (carePlan == null)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CarePlan>> GetCarePlanById(Guid id)
         {
-            return BadRequest("Invalid Care Plan object");
+            var carePlan = await Task.FromResult(CarePlans.FirstOrDefault(t => t.Id == id));
+
+            if (carePlan == null)
+            {
+                return NotFound($"Care Plan with Id {id} not found");
+            }
+
+            return Ok(carePlan);
         }
 
-        carePlan.Id = GenerateCarePlanId();
-        carePlans.Add(carePlan);
-
-        return CreatedAtAction(nameof(GetCarePlanById), new { id = carePlan.Id }, carePlan);
-    }
-
-    [HttpPut("{id}")]
-    public ActionResult<CarePlan> UpdateCarePlan(Guid id, [FromBody] CarePlan updatedCarePlan)
-    {
-        var existingCarePlan = carePlans.FirstOrDefault(t => t.Id == id);
-
-        if (existingCarePlan == null)
+        [HttpPost]
+        public async Task<ActionResult<CarePlan>> CreateCarePlan([FromBody] CarePlan carePlan)
         {
-            return NotFound($"Care Plan with Id {id} not found");
+            if (carePlan == null)
+            {
+                return BadRequest("Invalid Care Plan object");
+            }
+
+            carePlan.Id = GenerateCarePlanId();
+            CarePlans.Add(carePlan);
+
+            return CreatedAtAction(nameof(GetCarePlanById), new { id = carePlan.Id }, carePlan);
         }
 
-        existingCarePlan.Title = updatedCarePlan.Title;
-        existingCarePlan.PatientName = updatedCarePlan.PatientName;
-        existingCarePlan.UserName = updatedCarePlan.UserName;
-        existingCarePlan.ActualStartDateTime = updatedCarePlan.ActualStartDateTime;
-        existingCarePlan.TargetStartDateTime = updatedCarePlan.TargetStartDateTime;
-        existingCarePlan.Reason = updatedCarePlan.Reason;
-        existingCarePlan.Action = updatedCarePlan.Action;
-        existingCarePlan.Completed = updatedCarePlan.Completed;
-        existingCarePlan.EndDateTime = updatedCarePlan.EndDateTime;
-        existingCarePlan.Outcome = updatedCarePlan.Outcome;
-
-        return Ok(existingCarePlan);
-    }
-
-    [HttpDelete("{id}")]
-    public ActionResult DeleteCarePlan(Guid id)
-    {
-        var carePlan = carePlans.FirstOrDefault(t => t.Id == id);
-
-        if (carePlan == null)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<CarePlan>> UpdateCarePlan(Guid id, [FromBody] CarePlan updatedCarePlan)
         {
-            return NotFound($"Care Plan with Id {id} not found");
+            var existingCarePlan = CarePlans.FirstOrDefault(t => t.Id == id);
+
+            if (existingCarePlan == null)
+            {
+                return NotFound($"Care Plan with Id {id} not found");
+            }
+
+            existingCarePlan.Title = updatedCarePlan.Title;
+            existingCarePlan.PatientName = updatedCarePlan.PatientName;
+            existingCarePlan.UserName = updatedCarePlan.UserName;
+            existingCarePlan.ActualStartDateTime = updatedCarePlan.ActualStartDateTime;
+            existingCarePlan.TargetStartDateTime = updatedCarePlan.TargetStartDateTime;
+            existingCarePlan.Reason = updatedCarePlan.Reason;
+            existingCarePlan.Action = updatedCarePlan.Action;
+            existingCarePlan.Completed = updatedCarePlan.Completed;
+            existingCarePlan.EndDateTime = updatedCarePlan.EndDateTime;
+            existingCarePlan.Outcome = updatedCarePlan.Outcome;
+
+            return Ok(existingCarePlan);
         }
 
-        carePlans.Remove(carePlan);
-        return NoContent();
-    }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteCarePlan(Guid id)
+        {
+            var carePlan = CarePlans.FirstOrDefault(t => t.Id == id);
 
-    private Guid GenerateCarePlanId()
-    {
-        // In a real application, you might want to use a database-generated ID
-        return Guid.NewGuid();
+            if (carePlan == null)
+            {
+                return NotFound($"Care Plan with Id {id} not found");
+            }
+
+            CarePlans.Remove(carePlan);
+            return NoContent();
+        }
+
+        private Guid GenerateCarePlanId()
+        {
+            return Guid.NewGuid();
+        }
     }
 }

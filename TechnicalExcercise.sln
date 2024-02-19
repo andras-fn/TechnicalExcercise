@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalExcercise.Server",
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "technicalexcercise.client", "technicalexcercise.client\technicalexcercise.client.esproj", "{82A9EE5B-6863-4FDB-803D-16DB3CBF404D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalExcercise.Server.Tests", "TechnicalExcercise.Server.Tests\TechnicalExcercise.Server.Tests.csproj", "{5A547569-4BF2-49F9-9417-B6F742A3069C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{82A9EE5B-6863-4FDB-803D-16DB3CBF404D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82A9EE5B-6863-4FDB-803D-16DB3CBF404D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{82A9EE5B-6863-4FDB-803D-16DB3CBF404D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5A547569-4BF2-49F9-9417-B6F742A3069C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A547569-4BF2-49F9-9417-B6F742A3069C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A547569-4BF2-49F9-9417-B6F742A3069C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A547569-4BF2-49F9-9417-B6F742A3069C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -107,6 +107,9 @@ const ViewingArea = ({
       } catch (error) {
         // catch the error
         console.log(error);
+        alert(
+          "An error was encountered while trying to complete your action. Please try again later."
+        );
       }
     }
   };

@@ -40,7 +40,7 @@ const App = () => {
         activeCarePlan={activeCarePlan}
       />
       {/* viewing area */}
-      {error !== null ? (
+      {error !== null || error !== undefined ? (
         <div className="max-h-[calc(100%-56px)] h-[calc(100%-56px)] flex divide-x divide-slate-500">
           {/* left hand side bar */}
           <SideBar

@@ -5,7 +5,10 @@ const SideBar = ({ carePlans, activeCarePlan, setActiveCarePlan }) => {
   };
 
   return (
-    <div className="min-h-full max-h-full min-w-[400px] p-2">
+    <div
+      id="sidebar-outside-div"
+      className="min-h-full max-h-full min-w-[400px] p-2"
+    >
       <div className="overflow-y-scroll gap-y-2 flex flex-col pr-2 min-h-full max-h-full">
         {carePlans.map((carePlan) => (
           <div
